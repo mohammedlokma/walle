@@ -1,0 +1,226 @@
+from OpenGL.GL import *
+from OpenGL.GLUT import *
+from OpenGL.GLU import *
+import numpy as np
+from math import *
+
+
+
+def drawcircle(r=.1,xc=0,yc=0):
+    glBegin(GL_POINTS)
+    for theta in np.arange (0,2*pi,.008):
+        x=r*cos(theta)
+        y = r * sin(theta)
+        glColor3f(0,0,0)
+        glVertex(x+xc,y+yc)
+
+    glEnd()
+def drawcirclee(r=.1,xc=0,yc=0):
+    glBegin(GL_POLYGON)
+    for theta in np.arange (0,2*pi,.44):
+        x=r*cos(theta)
+        y = r * sin(theta)
+        glColor3f(0,.1,0)
+        glVertex(x+xc,y+yc)
+
+    glEnd()
+
+def drawcircleee(r=.1, xc=0, yc=0):
+     glBegin(GL_POLYGON)
+     for theta in np.arange(0, 2 * pi, .44):
+         x = r * cos(theta)
+         y = r * sin(theta)
+         glColor3f(.8, .2, 0)
+         glVertex(x + xc, y + yc)
+
+     glEnd()
+
+def draw():
+    glClearColor(1,1,1,1)
+
+    glClear(GL_COLOR_BUFFER_BIT)
+    glColor3f(1,0,.3)
+
+    # BaseGround
+    glColor3f(0.13, 0.27, 0.45)
+    glLineWidth(4)
+    glBegin(GL_LINES)
+    glVertex(-1, -0.8)
+    glVertex(1, -0.8)
+    glVertex(-0.5, -0.85)
+    glVertex(-0.1, -0.85)
+    glVertex(0.1, -0.85)
+    glVertex(0.5, -0.85)
+    glVertex(-0.2, -0.9)
+    glVertex(0.2, -0.9)
+    glEnd()
+
+
+    #eyes
+    drawcircle(.1,.17,.7)
+    drawcircle(.1, -.17, .7)
+    drawcirclee(.05, .17, .7)
+    drawcirclee(.05, -.17, .7)
+
+    #body
+    glColor3f(0.984, 0.812, 0.302)
+    glBegin(GL_POLYGON)
+    glVertex(0.5, -0.55)
+    glVertex(0.5, 0.35)
+    glVertex(-0.5, 0.35)
+    glVertex(-0.5, -0.55)
+    glEnd()
+    glBegin(GL_POLYGON)
+    glColor3f(0.984, 0.812, 0.302)
+    glVertex(-0.5, 0.35)
+    glVertex(-0.45, 0.4)
+    glVertex(0.45, 0.4)
+    glVertex(0.5, 0.35)
+    glEnd()
+    glBegin(GL_POLYGON)
+    glColor3f(0.984, 0.812, 0.302)
+    glVertex(-0.5, -0.55)
+    glVertex(-0.45, -0.6)
+    glVertex(0.45, - 0.6)
+    glVertex(0.5, -0.55)
+    glEnd()
+    drawcircleee(.03,.2,.32)
+
+    glLineWidth(4)
+    for (R, G, B, type) in ((0.52, 0.8, 1, GL_POLYGON), (0.13, 0.27, 0.45, GL_LINE_LOOP)):
+        glColor3f(R, G, B)
+        glBegin(type)
+        glVertex(.1,.37)
+        glVertex(.1,.25)
+        glVertex(-.17,.25)
+        glVertex(-.17,.37)
+        glEnd()
+
+    glBegin(GL_LINES)
+    glColor(0,0,0)
+    glVertex(.3,.4)
+    glVertex(.3,.090)
+    glVertex(.5,.090)
+    glVertex(-.5,.090)
+    glVertex(.3,.2)
+    glVertex(.5,.2)
+    glVertex(-.3, .4)
+    glVertex(-.3, .090)
+    glVertex(-.3, .2)
+    glVertex(-.5, .2)
+    glEnd()
+    #nose
+    glBegin(GL_POLYGON)
+    glColor(.5, .6, .5)
+    glVertex(.07,.7)
+    glVertex(.07, .67)
+    glVertex(-.07, .67)
+    glVertex(-.07,.7)
+    glEnd()
+   #neck
+    glBegin(GL_POLYGON)
+    glVertex(.015, .7)
+    glVertex(-.025, .7)
+    glVertex(-.025, .4)
+    glVertex(.015, .4)
+    glEnd()
+    #legs
+    for i in (1, -1):
+        glColor3f(0.5, 0.5, 0.5)
+        glBegin(GL_QUADS)
+        glVertex(i * 0.8, -0.8)
+        glVertex(i * 0.5, -0.8)
+        glVertex(i * 0.5, -0.3)
+        glVertex(i * 0.8, -0.3)
+        glEnd()
+
+        glColor3f(0, 0, 0)
+        glLineWidth(4)
+        glBegin(GL_LINE_LOOP)
+        glVertex(i * 0.8, -0.8)
+        glVertex(i * 0.8, -0.3)
+        glVertex(i * 0.5, -0.3)
+        glVertex(i * 0.5, -0.8)
+        glEnd()
+
+        glLineWidth(2)
+        glBegin(GL_LINES)
+        for j in range(0, 7):
+            glVertex(i * 0.8, -0.765 + j * (0.8 - 0.3) / 7)
+            glVertex(i * 0.5, -0.765 + j * (0.8 - 0.3) / 7)
+        glEnd()
+
+
+    #hands
+    for i in (-1, 1):
+
+
+
+        glColor3f(0.78, 0.9, 92)
+        glBegin(GL_QUADS)
+        glVertex(i * 0.25, 0.02)
+        glVertex(i * 0.25, 0.1)
+        glVertex(i * 0.55, 0.1)
+        glVertex(i * 0.55, 0.02)
+        glVertex(i * 0.55, 0.02)
+        glVertex(i * 0.5, 0.02)
+        glVertex(i * 0.5, -0.02)
+        glVertex(i * 0.55, -0.02)
+        glVertex(i * 0.25, -0.02)
+        glVertex(i * 0.55, -0.02)
+        glVertex(i * 0.55, -0.1)
+        glVertex(i * 0.25, -0.1)
+        glEnd()
+        glColor3f(0.13, 0.27, 0.45)
+        glBegin(GL_LINE_LOOP)
+        glVertex(i * 0.25, 0.02)
+        glVertex(i * 0.25, 0.1)
+        glVertex(i * 0.55, 0.1)
+        glVertex(i * 0.55, -0.1)
+        glVertex(i * 0.25, -0.1)
+        glVertex(i * 0.25, -0.02)
+        glVertex(i * 0.5, -0.02)
+        glVertex(i * 0.5, 0.02)
+        glEnd()
+
+        glBegin(GL_LINES)
+        glVertex(i * 0.4, 0.1)
+        glVertex(i * 0.4, 0.02)
+        glVertex(i * 0.4, -0.1)
+        glVertex(i * 0.4, -0.02)
+        glEnd()
+
+        for (R, G, B, type) in ((0.78, 0.9, 92, GL_POLYGON), (0.13, 0.27, 0.45, GL_LINE_LOOP)):
+            glColor3f(R, G, B)
+            glBegin(type)
+            glVertex(i * 0.57, 0.06)
+            glVertex(i * 0.5, 0.06)
+            glVertex(i * 0.5, -0.06)
+            glVertex(i * 0.57, -0.06)
+            glEnd()
+
+        for (R, G, B, type) in ((0.54, 0.63, 0.65, GL_POLYGON), (0.13, 0.27, 0.45, GL_LINE_LOOP)):
+            glColor3f(R, G, B)
+            glBegin(type)
+            glVertex(i * 0.27, 0.02)
+            glVertex(i * 0.5, 0.02)
+            glVertex(i * 0.5, -0.02)
+            glVertex(i * 0.27, -0.02)
+            glEnd()
+
+
+
+
+
+
+    glFlush()
+
+
+
+
+glutInit()
+glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB)
+glutInitWindowSize(500,500)
+glutCreateWindow(b"walle")
+glutDisplayFunc(draw)
+glutMainLoop()

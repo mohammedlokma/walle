@@ -95,6 +95,41 @@ def draw():
         glVertex(-.17,.25)
         glVertex(-.17,.37)
         glEnd()
+    #walle
+    glBegin(GL_LINES)
+    glColor(0, 0, 0)
+    glVertex(-.45, -.15)
+    glVertex(-.35, -.3)
+    glVertex(-.35, -.3)
+    glVertex(-.33, -.23)
+    glVertex(-.33, -.23)
+    glVertex(-.31, -.3)
+    glVertex(-.31, -.3)
+    glVertex(-.25, -.15)
+    glVertex(-.20, -.15)
+    glVertex(-.24, -.3)
+    glVertex(-.20, -.15)
+    glVertex(-.17, -.3)
+    glVertex(-.17, -.25)
+    glVertex(-.23, -.25)
+
+    glVertex(-.13,-.15)
+    glVertex(-.13,-.3)
+    glVertex(-.13, -.3)
+    glVertex(-.080, -.3)
+    glVertex(-.060, -.15)
+    glVertex(-.060, -.3)
+    glVertex(-.060, -.3)
+    glVertex(-.010, -.3)
+    glVertex(.05, -.15)
+    glVertex(.15, -.15)
+    glVertex(.05, -.15)
+    glVertex(.05, -.3)
+    glVertex(.05, -.3)
+    glVertex(.15, -.3)
+    glVertex(.05, -.22)
+    glVertex(.15, -.22)
+    glEnd()
 
     glBegin(GL_LINES)
     glColor(0,0,0)
@@ -108,7 +143,12 @@ def draw():
     glVertex(-.3, .090)
     glVertex(-.3, .2)
     glVertex(-.5, .2)
+
+
     glEnd()
+
+
+
     #nose
     glBegin(GL_POLYGON)
     glColor(.5, .6, .5)
